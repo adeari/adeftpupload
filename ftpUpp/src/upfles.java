@@ -21,10 +21,10 @@ import org.apache.commons.net.ftp.FTPFile;
  */
 public class upfles extends javax.swing.JFrame {
 
-    String hostname = "iska.id1945.com",
-            username = "u794902763",
-            pass = "de3fr4gt5",
-            prefixFolder = "E:/proyeKerja/onlineshop/src/upload/";
+    String hostname = "",
+            username = "",
+            pass = "",
+            prefixFolder = "";
 
     /**
      * Creates new form upfles
@@ -43,6 +43,15 @@ public class upfles extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
+        hostFtp = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        USerFTP = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        prefixFile = new javax.swing.JTextField();
+        PAssFTp = new javax.swing.JPasswordField();
+        jToggleButton1 = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,28 +62,84 @@ public class upfles extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("Hostname ftp");
+
+        jLabel2.setText("Username ftp");
+
+        jLabel3.setText("password ftp");
+
+        jLabel4.setText("prefix folder");
+
+        jToggleButton1.setText("Ambil setting");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(147, 147, 147)
-                .addComponent(jButton1)
-                .addContainerGap(186, Short.MAX_VALUE))
+                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(PAssFTp))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(USerFTP, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(hostFtp, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jToggleButton1))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton1)
+                            .addComponent(prefixFile, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addComponent(jButton1)
-                .addContainerGap(235, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(hostFtp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(USerFTP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(PAssFTp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(prefixFile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jToggleButton1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        pack();
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-416)/2, (screenSize.height-338)/2, 416, 338);
+        java.awt.Dimension dialogSize = getSize();
+        setLocation((screenSize.width-dialogSize.width)/2,(screenSize.height-dialogSize.height)/2);
     }// </editor-fold>//GEN-END:initComponents
 
     private String UploadHere(File flUpp, String direkToryn) {
+        System.out.println(hostname + "-" + username + "pass" + pass);
         String getBack = "";
         FTPClient ftp = new FTPClient();
         try {
@@ -89,11 +154,11 @@ public class upfles extends javax.swing.JFrame {
                 String direktoryNow = "";
                 while (stk.hasMoreTokens()) {
                     direktoryNow = stk.nextToken();
-                    System.out.println("in directory " + direktoryNow);
                     ftp.changeWorkingDirectory(direktoryNow);
                 }
             }
             ftp.storeFile(flUpp.getName(), fis);
+            System.out.println("upload success");
             ftp.logout();
         } catch (Exception ex) {
             getBack = ex.getMessage();
@@ -102,7 +167,60 @@ public class upfles extends javax.swing.JFrame {
     }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         JFileChooser fc = new JFileChooser();
+        hostname = hostFtp.getText();
+        username = USerFTP.getText();
+        pass = PAssFTp.getText();
+        prefixFolder = prefixFile.getText();
+        prefixFolder = prefixFolder.replace("\\", "/");
+        if (hostname.length() > 0 && username.length() > 0 && pass.length() > 0 && prefixFolder.length() > 0) {
+            if (fc.showOpenDialog(this) == fc.APPROVE_OPTION) {
+                File fl = fc.getSelectedFile();
+                try {
+                    FileInputStream fstream = new FileInputStream(fl);
+                    DataInputStream in = new DataInputStream(fstream);
+                    BufferedReader br = new BufferedReader(new InputStreamReader(in));
+                    String strLine;
+                    File flUpp = fc.getSelectedFile();
+                    String getBir = "";
+                    while ((strLine = br.readLine()) != null && getBir.length() < 1) {
+                        if (strLine.length() > 0) {
+                            flUpp = new File(prefixFolder + "/" + strLine);
+                            if (flUpp.isFile()) {
+                                try {
+                                    strLine = strLine.substring(0, strLine.length() - flUpp.getName().length() - 1);
+                                    strLine = strLine.replace("\\", "/");
+                                } catch (Exception ex) {
+                                    strLine = "";
+                                }
+                                System.out.println("up this = " + strLine + " - filename = " + flUpp.getName());
+                                getBir = UploadHere(flUpp, strLine);
+                            }
+                        }
+                    }
 
+                    if (getBir.length() < 1) {
+                        javax.swing.JOptionPane.showConfirmDialog(null, "Sudah di upload", "Information",
+                                javax.swing.JOptionPane.PLAIN_MESSAGE);
+                    } else {
+                        javax.swing.JOptionPane.showConfirmDialog(null, "Error " + getBir, "Error",
+                                javax.swing.JOptionPane.ERROR_MESSAGE);
+                    }
+
+                    in.close();
+                } catch (Exception ex) {
+                    javax.swing.JOptionPane.showConfirmDialog(null, "Error " + ex.getMessage(), "Error",
+                            javax.swing.JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        } else {
+            javax.swing.JOptionPane.showConfirmDialog(null, "Isi semua", "Error",
+                    javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        JFileChooser fc = new JFileChooser();
         if (fc.showOpenDialog(this) == fc.APPROVE_OPTION) {
             File fl = fc.getSelectedFile();
             try {
@@ -110,45 +228,20 @@ public class upfles extends javax.swing.JFrame {
                 DataInputStream in = new DataInputStream(fstream);
                 BufferedReader br = new BufferedReader(new InputStreamReader(in));
                 String strLine;
-                File flUpp = fc.getSelectedFile();
-                String getBir = "";
-
-
-
-                while ((strLine = br.readLine()) != null && getBir.length() < 1) {
+                while ((strLine = br.readLine()) != null) {
                     if (strLine.length() > 0) {
-                        flUpp = new File(strLine);
-                        if (flUpp.isFile()) {
-                            System.out.println("prefixFolder" + prefixFolder + " get filename " + flUpp);
-                            strLine = strLine.substring(prefixFolder.length());
-                            try {
-                                strLine = strLine.substring(0, strLine.length() - flUpp.getName().length() - 1);
-                                strLine = strLine.replace("\\", "/");
-                            } catch (Exception ex) {
-                                strLine = "";
-                            }
-                            System.out.println("folder = " + strLine);
-                            getBir = UploadHere(flUpp, strLine);
-                        }
+                        StringTokenizer stk = new StringTokenizer(strLine,";");
+                        hostFtp.setText(stk.nextToken());
+                        USerFTP.setText(stk.nextToken());
+                        PAssFTp.setText(stk.nextToken());
+                        prefixFile.setText(stk.nextToken());
                     }
                 }
-
-                if (getBir.length() < 1) {
-                    javax.swing.JOptionPane.showConfirmDialog(null, "Sudah di upload", "Information",
-                            javax.swing.JOptionPane.PLAIN_MESSAGE);
-                } else {
-                    javax.swing.JOptionPane.showConfirmDialog(null, "Error " + getBir, "Error",
-                            javax.swing.JOptionPane.ERROR_MESSAGE);
-                }
-
-                in.close();
             } catch (Exception ex) {
-                javax.swing.JOptionPane.showConfirmDialog(null, "Error " + ex.getMessage(), "Error",
-                        javax.swing.JOptionPane.ERROR_MESSAGE);
+                
             }
         }
-
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -185,6 +278,15 @@ public class upfles extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPasswordField PAssFTp;
+    private javax.swing.JTextField USerFTP;
+    private javax.swing.JTextField hostFtp;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JTextField prefixFile;
     // End of variables declaration//GEN-END:variables
 }
