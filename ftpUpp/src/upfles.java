@@ -1,4 +1,5 @@
 
+import java.awt.Rectangle;
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.File;
@@ -52,6 +53,7 @@ public class upfles extends javax.swing.JFrame {
         prefixFile = new javax.swing.JTextField();
         PAssFTp = new javax.swing.JPasswordField();
         jToggleButton1 = new javax.swing.JToggleButton();
+        jProgressBar1 = new javax.swing.JProgressBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,34 +79,46 @@ public class upfles extends javax.swing.JFrame {
             }
         });
 
+        jProgressBar1.setBackground(new java.awt.Color(255, 153, 153));
+        jProgressBar1.setForeground(new java.awt.Color(102, 102, 102));
+        jProgressBar1.setMaximum(20);
+        jProgressBar1.setName("jProgressBar1"); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(PAssFTp))
+                        .addGap(22, 22, 22)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(hostFtp, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(prefixFile))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(PAssFTp))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(USerFTP, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(USerFTP, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap()
+                        .addComponent(jToggleButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(hostFtp, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jToggleButton1))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
-                            .addComponent(prefixFile, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(20, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addComponent(jProgressBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(54, 54, 54))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,10 +140,12 @@ public class upfles extends javax.swing.JFrame {
                     .addComponent(prefixFile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
+                .addComponent(jProgressBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 19, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jToggleButton1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jToggleButton1)
+                    .addComponent(jButton1))
+                .addGap(39, 39, 39))
         );
 
         pack();
@@ -139,7 +155,6 @@ public class upfles extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private String UploadHere(File flUpp, String direkToryn) {
-        System.out.println(hostname + "-" + username + "pass" + pass);
         String getBack = "";
         FTPClient ftp = new FTPClient();
         try {
@@ -179,10 +194,35 @@ public class upfles extends javax.swing.JFrame {
                     FileInputStream fstream = new FileInputStream(fl);
                     DataInputStream in = new DataInputStream(fstream);
                     BufferedReader br = new BufferedReader(new InputStreamReader(in));
-                    String strLine;
+                    String strLine = "";
                     File flUpp = fc.getSelectedFile();
                     String getBir = "";
+
+
+                    jProgressBar1.setMinimum(1);
+                    int i = 0;
+                    while ((strLine = br.readLine()) != null) {
+                        i++;
+                    }
+                    jProgressBar1.setMaximum(i);
+                    fstream.close();
+                    in.close();
+                    br.close();
+
+                    fstream = new FileInputStream(fl);
+                    in = new DataInputStream(fstream);
+                    br = new BufferedReader(new InputStreamReader(in));
+
+                    
+                    jProgressBar1.setValue(0);
+                    Rectangle progressRect = jProgressBar1.getBounds();
+                    progressRect.x = 0;
+                    progressRect.y = 0;
+                    jProgressBar1.paintImmediately(progressRect);
+                    i=0;
                     while ((strLine = br.readLine()) != null && getBir.length() < 1) {
+                        jProgressBar1.setValue(i);
+                        jProgressBar1.paintImmediately(progressRect);
                         if (strLine.length() > 0) {
                             flUpp = new File(prefixFolder + "/" + strLine);
                             if (flUpp.isFile()) {
@@ -196,7 +236,13 @@ public class upfles extends javax.swing.JFrame {
                                 getBir = UploadHere(flUpp, strLine);
                             }
                         }
+                        i++;
                     }
+                    jProgressBar1.setValue(i);
+                    jProgressBar1.paintImmediately(progressRect);
+                    fstream.close();
+                    in.close();
+                    br.close();
 
                     if (getBir.length() < 1) {
                         javax.swing.JOptionPane.showConfirmDialog(null, "Sudah di upload", "Information",
@@ -230,7 +276,7 @@ public class upfles extends javax.swing.JFrame {
                 String strLine;
                 while ((strLine = br.readLine()) != null) {
                     if (strLine.length() > 0) {
-                        StringTokenizer stk = new StringTokenizer(strLine,";");
+                        StringTokenizer stk = new StringTokenizer(strLine, ";");
                         hostFtp.setText(stk.nextToken());
                         USerFTP.setText(stk.nextToken());
                         PAssFTp.setText(stk.nextToken());
@@ -238,7 +284,6 @@ public class upfles extends javax.swing.JFrame {
                     }
                 }
             } catch (Exception ex) {
-                
             }
         }
     }//GEN-LAST:event_jToggleButton1ActionPerformed
@@ -286,6 +331,7 @@ public class upfles extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JTextField prefixFile;
     // End of variables declaration//GEN-END:variables
